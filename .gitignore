@@ -1,3 +1,4 @@
 .DS_Store
-.omc/state/
-.omc/sessions/
+.omc/
+.claude/
+.mcp.json

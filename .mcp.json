@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "sjinn": {
-      "type": "streamable-http",
-      "url": "https://mcp.sjinn.ai/mcp"
-    }
-  }
-}
