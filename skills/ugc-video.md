@@ -288,6 +288,124 @@ Apply these rules to every prompt you generate:
 
 ---
 
+### Complete Template
+
+Copy this and fill in the `{{VARIABLES}}`:
+
+```
+{{DURATION}} UGC style {{CONTENT_TYPE}} video, filmed on smartphone,
+{{LIGHTING_SOURCE}}, {{CAMERA_ANGLE}}. A {{AGE_RANGE}} {{GENDER}} with
+{{HAIR}}, {{SKIN_TEXTURE}}, wearing {{CLOTHING}}, in {{THEIR_SPACE}} —
+{{CLUTTER_DETAIL_1}}, {{CLUTTER_DETAIL_2}}, {{CLUTTER_DETAIL_3}},
+{{ATMOSPHERE}} and real. {{PRONOUN}} holds the @(img1)
+({{PRODUCT_DESCRIPTION}}) {{PRODUCT_INTRO_STYLE}}.
+
+The video opens with {{PRONOUN}} {{HOOK_ACTION}}: "{{HOOK_LINE}}"
+
+Quick jump cut — {{BEAT_2_FRAMING}}, {{BEAT_2_ACTION}}:
+"{{BEAT_2_DIALOGUE}}"
+
+Jump cut — {{BEAT_3_FRAMING}}, {{BEAT_3_ACTION}}.
+
+Jump cut — {{BEAT_4_FRAMING}}, {{BEAT_4_ACTION}}:
+"{{BEAT_4_DIALOGUE}}" {{CLOSING_ACTION}}.
+
+Throughout the video, the tone is {{TONE_EMOTIONS}} —
+{{TONE_BEHAVIOR}}. The pacing is natural and unhurried — {{PACING_CUE}}.
+Each jump cut is {{ANGLE_VARIATION}}. {{EDIT_FEEL}}.
+
+The lighting is {{LIGHT_TYPE}} — {{LIGHT_FLAW}}. The image is
+slightly imperfect — {{CAMERA_FLAWS}}. The sound is
+{{AUDIO_SOURCE}} — {{AUDIO_DETAILS}}.
+
+The overall feel is {{VIBE_ADJECTIVES}} — {{RELATABLE_METAPHOR}}.
+```
+
+---
+
+### Quick-Start Examples
+
+#### Example A: Skincare serum (bedroom, excited fan)
+
+```
+15 seconds UGC style skincare review video, filmed on smartphone,
+natural bedroom window lighting, casual handheld selfie angle. A young
+woman with brown hair pulled back, natural skin with visible texture,
+wearing a casual grey t-shirt, in her cozy bedroom — books on shelves,
+plants on the windowsill, clothes on a chair, lived-in and real. She
+holds the @(img1) (LUNA Aurora Serum bottle) up to the camera.
+
+The video opens with her looking into the camera, excited expression:
+"Okay, so I've been using this for two weeks, and I need to talk about
+it."
+
+Quick jump cut — she's now showing the bottle closer to the lens,
+tilting it so the holographic text catches the light from the window:
+"The texture is insane, it's like water but silky?"
+
+Jump cut — extreme close-up of her pressing the dropper, the serum
+dropping onto her fingertips, she rubs it between her fingers, showing
+the consistency.
+
+Jump cut — she leans into the camera, pointing at her cheek with a
+genuine smile: "Look, I actually have a glow right now, and I'm
+literally wearing nothing." She laughs, the video cuts.
+
+Throughout the video, the tone is genuine, unscripted-feeling, warm —
+she talks fast, uses natural pauses, laughs at herself. Each jump cut
+is slightly closer or at a different angle, as if she filmed multiple
+takes and edited the best bits together.
+
+The lighting is soft natural daylight, no ring light, no filters. The
+image is slightly imperfect — natural phone quality, not color graded,
+authentic. The sound is direct from the phone mic — room ambience, her
+natural voice, no music underneath.
+
+The overall feel is trustworthy, relatable, real — a friend telling you
+about something she genuinely likes.
+```
+
+#### Example B: Protein powder (kitchen, chill recommender)
+
+```
+15 seconds UGC style honest review video, filmed on smartphone,
+morning kitchen light through blinds, phone propped on counter. A guy
+in his late 20s with short dark hair and stubble, natural skin with
+visible pores and slight undereye shadows, wearing a worn-in black
+t-shirt, in his small apartment kitchen — coffee mug on counter,
+cutting board with banana peel, blender in background, morning mess
+and real. He has the @(img1) (GAINZ Chocolate Whey tub) sitting next
+to the blender.
+
+The video opens with him looking at camera, half-smile: "Alright so
+everyone keeps asking me about my protein powder, so here it is."
+
+Quick jump cut — he picks up the tub, turns it to show the label:
+"Chocolate whey, nothing fancy, but the macros are actually insane."
+
+Jump cut — he scoops powder into the blender, close-up of the scoop
+coming out clean.
+
+Jump cut — he holds the tub up, taps the label: "Link's in my bio,
+you're welcome." He laughs and walks off frame.
+
+Throughout the video, the tone is relaxed, honest, conversational —
+he speaks slowly, makes steady eye contact, shrugs casually. Each
+jump cut is slightly closer or at a different angle, morning light
+shifting between takes.
+
+The lighting is uneven kitchen light — bright from the window side,
+shadow on the other, no overhead light on. The image is slightly
+imperfect — natural phone quality, slight warm cast, not color graded.
+The sound is front camera mic — slightly tinny, fridge hum in
+background, his natural voice.
+
+The overall feel is calm, honest, no-BS — a buddy telling you what
+he actually uses, not selling you anything.
+```
+
+---
+
 ### Final Adaptation Checklist
 
 Before outputting any prompt, verify ALL of these:
