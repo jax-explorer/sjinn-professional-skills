@@ -1,3 +1,8 @@
+---
+name: UGC Video Prompt Generator
+description: Generate and create UGC-style product review and testimonial videos using SJinn Seedance 2.0, with 9-layer prompt architecture for authentic selfie-style content.
+---
+
 # UGC Video Prompt Generator — Seedance 2.0
 
 Generate UGC-style (user-generated content) product review/testimonial video prompts optimized for Seedance 2.0 AI video generation.

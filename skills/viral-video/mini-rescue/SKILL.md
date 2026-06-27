@@ -1,3 +1,8 @@
+---
+name: Mini Rescue
+description: Generate cinematic miniature-world rescue scenes with image and video creation via SJinn, featuring tiny figurines saved by a giant hand.
+---
+
 # Mini Rescue — Cinematic Miniature World Rescue Scenes
 
 Generate "giant hand saves the day" miniature-world rescue scene prompts, then create the image and video using SJinn.
