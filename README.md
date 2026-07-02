@@ -17,6 +17,17 @@ Generates authentic UGC-style (user-generated content) product review and testim
 
 **Trigger:** "ugc-video", "UGC ad", "selfie-style video", "product review video", "testimonial video"
 
+### Product Hero (`skills/marketing/product-hero/`)
+
+Generates dramatic, person-free product showcase videos where the product is the sole star — moody lighting, elemental interaction, and escalating shot sequences.
+
+- 6-layer prompt architecture (format, product, environment, shot sequence, text overlays, technical quality)
+- Element bank by product type (beverage, supplement, skincare, tech, food)
+- 3 shot sequence frameworks (escalating drama, reveal build, pure spectacle)
+- Reflective surfaces, deep-colored backdrops, slow-motion elemental effects
+
+**Trigger:** "product-hero", "product showcase", "product commercial", "hero shot video", "dramatic product video", "beverage commercial"
+
 ### Mini Rescue (`skills/viral-video/mini-rescue/`)
 
 Generates cinematic "giant hand saves the day" miniature-world rescue scenes — both image and video.
@@ -59,6 +70,7 @@ Open Claude Code in the project directory and use a trigger phrase:
 
 ```
 > ugc-video
+> product-hero
 > mini-rescue
 ```
 
@@ -69,6 +81,8 @@ Claude will guide you through the input gathering and generation workflow.
 ```
 skills/
 ├── marketing/
+│   ├── product-hero/
+│   │   └── SKILL.md        # Product hero prompt system
 │   └── ugc-video/
 │       └── SKILL.md        # UGC video prompt system
 └── viral-video/
@@ -81,6 +95,7 @@ skills/
 | Skill | Model | Output |
 |-------|-------|--------|
 | UGC Video | `seedance2` | 4–15s vertical video |
+| Product Hero | `seedance2` | 15s, 9:16, quality mode |
 | Mini Rescue (image) | `nano-banana-2` | 9:16, 2K still frame |
 | Mini Rescue (video) | `seedance2` | 10s, 9:16, quality mode |
 
