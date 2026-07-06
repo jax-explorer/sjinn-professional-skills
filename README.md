@@ -28,6 +28,17 @@ Generates dramatic, person-free product showcase videos where the product is the
 
 **Trigger:** "product-hero", "product showcase", "product commercial", "hero shot video", "dramatic product video", "beverage commercial"
 
+### Realistic Image (`skills/realistic/realistic-image/`)
+
+Generates photorealistic images in "Raw Camera Casting Realism" style — unretouched, physically present, believable camera-file aesthetics for people, products, animals, and materials.
+
+- Complete prompt expansion from short text, detailed text, reference image, or mixed input
+- Realism stack: skin microstructure, vellus hair, pores, asymmetry, fabric weave, dust, scratches
+- Anti-slop rules: no beauty-render polish, no generic quality boosters, no CGI smoothness
+- Supports human portraits, animals, products, plants, architecture, and abstract subjects
+
+**Trigger:** "realistic-image", "realistic photo", "raw photo", "casting photo", "unretouched portrait", "camera-style photo"
+
 ### Mini Rescue (`skills/viral-video/mini-rescue/`)
 
 Generates cinematic "giant hand saves the day" miniature-world rescue scenes — both image and video.
@@ -85,6 +96,9 @@ skills/
 │   │   └── SKILL.md        # Product hero prompt system
 │   └── ugc-video/
 │       └── SKILL.md        # UGC video prompt system
+├── realistic/
+│   └── realistic-image/
+│       └── SKILL.md        # Raw Camera Casting Realism prompt system
 └── viral-video/
     └── mini-rescue/
         └── SKILL.md        # Mini rescue prompt system
@@ -96,6 +110,7 @@ skills/
 |-------|-------|--------|
 | UGC Video | `seedance2` | 4–15s vertical video |
 | Product Hero | `seedance2` | 15s, 9:16, quality mode |
+| Realistic Image | `nano-banana-pro` | 1:1, 2K still image |
 | Mini Rescue (image) | `nano-banana-2` | 9:16, 2K still frame |
 | Mini Rescue (video) | `seedance2` | 10s, 9:16, quality mode |
 
