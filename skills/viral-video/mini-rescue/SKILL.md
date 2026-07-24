@@ -1,5 +1,5 @@
 ---
-name: Mini Rescue
+name: mini-rescue
 description: Generate cinematic miniature-world rescue scenes with image and video creation via SJinn, featuring tiny figurines saved by a giant hand.
 ---
 

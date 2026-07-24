@@ -1,5 +1,5 @@
 ---
-name: Product Hero Video
+name: product-hero
 description: Generate dramatic, person-free product showcase videos using SJinn Seedance 2.0, with 6-layer prompt architecture for moody lighting, elemental interaction, and escalating shot sequences.
 ---
 

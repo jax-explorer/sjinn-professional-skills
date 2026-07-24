@@ -1,5 +1,5 @@
 ---
-name: Realistic Image
+name: realistic-image
 description: Generate Raw Camera Casting Realism style image prompts and create photorealistic images via SJinn Nano Banana Pro — unretouched, physically present, believable camera-file aesthetics.
 ---
 
