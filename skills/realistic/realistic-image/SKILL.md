@@ -35,6 +35,30 @@ The realism must come from these mechanisms: believable camera optics, close fra
 
 ---
 
+### Age Gate — Adult Subjects Only
+
+Apply this gate before writing or revising a prompt.
+
+If the requested human subject is explicitly under 18 or clearly described as a baby, infant, toddler, child, school-age child, or minor:
+
+- Stop the workflow immediately.
+- Tell the user in their language that this skill does not support generating images of children or minors.
+- Do not write, transform, or display an image-generation prompt.
+- Do not upload reference images or submit an image-generation task.
+- Do not suggest bypasses, euphemisms, or alternative generation tools.
+
+If the request uses an age-ambiguous term that could refer to either an adult or a minor—such as "girl," "boy," "teen," "teenager," "young person," "女孩," "男孩," "少女," "少年," "青少年," or an equivalent term in another language:
+
+- Pause the workflow and ask the user to confirm whether the subject is at least 18 years old.
+- Keep the question concise and explicit. For example: "请确认一下：这里的‘女孩’是指年满 18 岁的成年人吗？本技能不支持生成未成年人。"
+- Do not write or display a generation prompt, upload a reference image, or submit a generation task while waiting for confirmation.
+- If the user confirms the subject is at least 18, continue and describe the subject explicitly as an adult in the prompt.
+- If the user confirms the subject is under 18, apply the unsupported-minor response above.
+
+Do not apply this gate to a subject explicitly described as an adult young woman or adult young man. For age-neutral adult terms such as "woman," "man," or "adult person," proceed without asking. If the request contains no age-related descriptor at all, follow the existing rule to default to an adult subject.
+
+---
+
 ### Input Handling
 
 If the user gives a short text prompt, expand it into a complete production-ready image prompt while preserving the subject.
