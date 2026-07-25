@@ -1,0 +1,11 @@
+interface:
+  display_name: "Influencer Image Clone"
+  short_description: "Clone an adult subject from reference photos"
+  default_prompt: "Use $influencer-image-clone to recreate the adult subject in my reference photo as a new still image."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "sjinn"
+      description: "SJinn image generation and reference asset upload"
+      transport: "streamable_http"
+      url: "https://mcp.sjinn.ai/mcp"

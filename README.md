@@ -39,6 +39,17 @@ Generates photorealistic images in "Raw Camera Casting Realism" style — unreto
 
 **Trigger:** "realistic-image", "realistic photo", "raw photo", "casting photo", "unretouched portrait", "camera-style photo"
 
+### Influencer Image Clone (`skills/influencer/influencer-image-clone/`)
+
+Recreates the adult subject in one or more reference photos as a new photorealistic still image while preserving visible facial geometry, hair, skin details, and identity-defining features.
+
+- Separates stable identity anchors from changeable pose, outfit, setting, and lighting
+- Uses the reference image directly with SJinn Nano Banana Pro for stronger continuity
+- Includes prompt approval, identity-drift checks, and still-image artifact QA
+- Image-only workflow with no video generation or animation steps
+
+**Trigger:** "influencer-image-clone", "clone this influencer photo", "recreate this person", "same person in a new setting", "match this creator"
+
 ### Mini Rescue (`skills/viral-video/mini-rescue/`)
 
 Generates cinematic "giant hand saves the day" miniature-world rescue scenes — both image and video.
@@ -92,6 +103,7 @@ Open Claude Code in the project directory and use a trigger phrase:
 ```
 > ugc-video
 > product-hero
+> influencer-image-clone
 > mini-rescue
 > flying-dragon
 ```
@@ -107,6 +119,11 @@ skills/
 │   │   └── SKILL.md        # Product hero prompt system
 │   └── ugc-video/
 │       └── SKILL.md        # UGC video prompt system
+├── influencer/
+│   └── influencer-image-clone/
+│       ├── agents/
+│       │   └── openai.yaml # Codex UI metadata
+│       └── SKILL.md        # Reference-based identity recreation
 ├── realistic/
 │   └── realistic-image/
 │       └── SKILL.md        # Raw Camera Casting Realism prompt system
@@ -126,6 +143,7 @@ skills/
 | UGC Video | `seedance2` | 4–15s vertical video |
 | Product Hero | `seedance2` | 15s, 9:16, quality mode |
 | Realistic Image | `nano-banana-pro` | 1:1, 2K still image |
+| Influencer Image Clone | `nano-banana-pro` | Reference-guided 2K still image |
 | Mini Rescue (image) | `nano-banana-2` | 9:16, 2K still frame |
 | Mini Rescue (video) | `seedance2` | 10s, 9:16, quality mode |
 | Flying Dragon (image) | `nano-banana-pro` | 9:16, 2K still frame |
