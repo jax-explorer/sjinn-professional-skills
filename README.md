@@ -49,6 +49,16 @@ Generates cinematic "giant hand saves the day" miniature-world rescue scenes —
 
 **Trigger:** "mini-rescue", "miniature rescue", "tiny people rescue", "giant hand rescue"
 
+### Flying Dragon (`skills/viral-video/flying-dragon/`)
+
+Generates hyper-photorealistic first-person dragon-riding scenes with a rider-locked POV, visible hands and harness, and a centered dragon spine.
+
+- Full image-to-video pipeline with a generated POV start frame
+- Aggressive banking, dives, climbs, acceleration, and physical momentum
+- Environmental interaction and immersive diegetic sound
+
+**Trigger:** "flying-dragon", "POV dragon ride", "dragon flight", "first-person dragon-riding video"
+
 ## Setup
 
 ### Prerequisites
@@ -83,6 +93,7 @@ Open Claude Code in the project directory and use a trigger phrase:
 > ugc-video
 > product-hero
 > mini-rescue
+> flying-dragon
 ```
 
 Claude will guide you through the input gathering and generation workflow.
@@ -100,6 +111,10 @@ skills/
 │   └── realistic-image/
 │       └── SKILL.md        # Raw Camera Casting Realism prompt system
 └── viral-video/
+    ├── flying-dragon/
+    │   ├── agents/
+    │   │   └── openai.yaml # Codex UI metadata
+    │   └── SKILL.md        # First-person dragon ride prompt system
     └── mini-rescue/
         └── SKILL.md        # Mini rescue prompt system
 ```
@@ -113,6 +128,8 @@ skills/
 | Realistic Image | `nano-banana-pro` | 1:1, 2K still image |
 | Mini Rescue (image) | `nano-banana-2` | 9:16, 2K still frame |
 | Mini Rescue (video) | `seedance2` | 10s, 9:16, quality mode |
+| Flying Dragon (image) | `nano-banana-pro` | 9:16, 2K still frame |
+| Flying Dragon (video) | `seedance2` | 10s, 9:16, quality mode |
 
 ## Adding New Skills
 

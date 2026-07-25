@@ -1,0 +1,4 @@
+interface:
+  display_name: "Flying Dragon"
+  short_description: "Generate visceral first-person dragon ride visuals"
+  default_prompt: "Use $flying-dragon to create a cinematic first-person dragon-riding image and video from my concept."
