@@ -1,0 +1,4 @@
+interface:
+  display_name: "Time Travel Vlog"
+  short_description: "Create cinematic time-travel vlog prompt sets"
+  default_prompt: "Use $time-travel-vlog to turn my scenario into five matched cinematic image and video prompts."
