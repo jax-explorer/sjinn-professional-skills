@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mechanical Toy"
+  short_description: "Create cinematic mechanical toy transformation prompts"
+  default_prompt: "Use $mechanical-toy to turn my subject into a compact mechanical toy and a cinematic transformation sequence."
