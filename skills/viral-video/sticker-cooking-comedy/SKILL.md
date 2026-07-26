@@ -13,7 +13,7 @@ description: Create funny short videos that composite a photorealistic live-acti
 
 - 10秒；
 - 竖屏9:16；
-- 1080p；
+- 720p；
 - Seedance 2.0 `quality` 模式；
 - 单一连续第一人称做饭POV，只有轻微手持晃动；
 - 四拍喜剧结构：捣乱、无伤害反应、夸张升级、定格反转；
@@ -221,7 +221,7 @@ image_urls: ["<2D贴纸参考图URL>"]
 aspect_ratio: "9:16"
 duration: 10
 mode: "quality"
-resolution: "1080p"
+resolution: "720p"
 ```
 
 不得把路线B的原图、未展示的转绘图、被拒绝的转绘图或尚未确认的转绘图传给 Seedance。路线C完全省略 `image_urls`。用户指定了 Seedance 2.0 支持的时长、比例或清晰度时，以用户要求为准。

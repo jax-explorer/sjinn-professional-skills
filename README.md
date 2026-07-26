@@ -166,7 +166,7 @@ skills/
 | Flying Dragon (image) | `nano-banana-pro` | 9:16, 2K still frame |
 | Flying Dragon (video) | `seedance2` | 10s, 9:16, quality mode |
 | Sticker Cooking Comedy (conversion, when needed) | `gpt-image-2` | 1:1 chibi 2D sticker reference, user-approved |
-| Sticker Cooking Comedy (video) | `seedance2` | 10s, 9:16, 1080p, quality mode |
+| Sticker Cooking Comedy (video) | `seedance2` | 10s, 9:16, 720p, quality mode |
 
 ## Adding New Skills
 
