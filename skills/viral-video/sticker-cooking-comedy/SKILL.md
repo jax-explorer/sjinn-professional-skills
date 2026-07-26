@@ -1,284 +1,284 @@
 ---
 name: sticker-cooking-comedy
-description: Create funny short videos that composite a photorealistic live-action cooking kitchen with a flat chibi 2D anime sticker IP character, using GPT-Image-2 only when a supplied character image needs conversion, requiring user approval of that conversion before continuing, and using SJinn Seedance 2.0 for the final video. Use for 真人厨房×2D动漫贴纸、Q版IP炒菜、厨房捣乱、倒盐恶作剧、卡通贴纸与真人手互动, or similar live-action/2D mixed cooking comedy requests, whether the user supplies a character image or only describes the IP.
+description: Create funny short videos that composite a photorealistic live-action cooking kitchen with a flat chibi 2D anime sticker IP character, using GPT-Image-2 only when a supplied character image needs conversion, requiring user approval of that conversion before continuing, and using SJinn Seedance 2.0 for the final video. Use for live-action kitchen and 2D anime sticker composites, chibi IP cooking videos, kitchen pranks, salt-sabotage gags, cartoon sticker and human-hand interactions, or similar cooking comedy requests, whether the user supplies a character image or only describes the IP.
 ---
 
 # Sticker Cooking Comedy
 
-制作“真实实拍厨房炒菜 × 纯2D动漫贴纸IP”的搞笑短视频。保持锅、菜、油、蒸汽、盐粒、厨具和真人手照片级写实；保持IP角色始终为扁平Q版动漫贴纸。
+Create a funny short video that combines a photorealistic live-action cooking kitchen with a pure flat 2D anime sticker IP character. Keep the wok, food, oil, steam, salt, utensils, and human hands photographic. Keep the IP character flat, chibi, and sticker-like throughout.
 
-## 默认成片规格
+## Default Output
 
-用户未指定时，使用：
+Use these defaults unless the user specifies otherwise:
 
-- 10秒；
-- 竖屏9:16；
-- 720p；
-- Seedance 2.0 `quality` 模式；
-- 单一连续第一人称做饭POV，只有轻微手持晃动；
-- 四拍喜剧结构：捣乱、无伤害反应、夸张升级、定格反转；
-- 真实厨房环境音 + 卡通音效，无对白、无背景音乐。
+- 10 seconds;
+- 9:16 vertical;
+- 720p;
+- Seedance 2.0 `quality` mode;
+- one continuous first-person cooking POV with subtle handheld micro-shake;
+- four comedy beats: prank, harmless reaction, exaggerated escalation, freeze-frame reversal;
+- realistic kitchen ambience plus cartoon sound effects, with no dialogue or background music.
 
-## 工作流
+## Workflow
 
-按顺序执行：
+Follow these steps in order:
 
-1. 判断用户图片是否已经是2D Q版动漫贴纸；
-2. 提取角色身份锚点；
-3. 只在必要时用 GPT-Image-2 转绘角色标准图；
-4. 如果发生转绘，展示转绘图并暂停，等待用户明确确认；
-5. 确认后写出带时间轴的 Seedance 2.0 提示词；
-6. 调用 SJinn 生成视频；
-7. 检查角色一致性、真人/贴纸反差和四拍节奏。
+1. Decide whether the supplied image is already a chibi 2D anime sticker.
+2. Extract a character identity anchor.
+3. Use GPT-Image-2 only when a conversion is necessary.
+4. If a conversion occurs, show the converted image and pause for explicit user approval.
+5. After approval, write the timestamped Seedance 2.0 prompt.
+6. Generate the video with SJinn.
+7. Review character consistency, live-action versus sticker contrast, and four-beat timing.
 
-用户明确要求“制作/生成视频”时，路线A和路线C直接完成生成，不要只停留在提示词；路线B必须执行转绘确认关卡，不能因为用户最初已经要求生成视频而跳过确认。用户只要求提示词时不要调用生成工具。
+When the user explicitly asks to create or generate a video, complete the generation directly for Route A and Route C. Route B must stop at the conversion approval gate even if the user originally requested a complete video. If the user asks only for prompts, do not call generation tools.
 
-## 第一步：选择图片路线
+## Step 1: Choose the Image Route
 
-三条路线只能选择一条：
+Choose exactly one route.
 
-### A. 用户图片已经是2D Q版动漫贴纸
+### Route A: The supplied image is already a chibi 2D anime sticker
 
-图片同时满足以下特征时直接使用，不要重新绘制：
+Use the image directly without redrawing it when it has all of these traits:
 
-- 明确的Q版简化比例；
-- 扁平色块、手绘水彩、蜡笔或纸张颗粒，而非写实体积；
-- 清晰卡通描边或完整贴纸轮廓；
-- 没有照片级皮肤、毛发、羽毛或3D玩具渲染。
+- clearly simplified chibi proportions;
+- flat color regions, watercolor, crayon, or paper grain instead of realistic volume;
+- a readable cartoon outline or complete sticker silhouette;
+- no photorealistic skin, fur, feathers, or 3D toy rendering.
 
-白色贴纸边不是必需条件。局部阴影不等于3D；以角色主体的整体画风判断。
+A white sticker border is helpful but not required. A small amount of painted shading does not automatically make the image 3D; classify the dominant character by its overall visual treatment.
 
-### B. 用户图片不是2D Q版动漫贴纸
+### Route B: The supplied image is not a chibi 2D anime sticker
 
-如果是照片、真人、写实动物、3D模型、盲盒、黏土、毛绒、厚涂写实或普通非Q版插画，先用 SJinn `gpt-image-2` 转成角色标准图。展示转绘结果并获得用户明确确认后，才能把该图传给 Seedance 2.0。
+If the image is a photograph, live-action person, realistic animal, 3D model, blind-box toy, clay figure, plush toy, realistic painting, or ordinary non-chibi illustration, convert it into a character reference with SJinn `gpt-image-2`. Show the result and obtain explicit user approval before passing it to Seedance 2.0.
 
-### C. 用户没有上传图片
+### Route C: No image is supplied
 
-不要额外生成图片。直接在 Seedance 2.0 视频提示词里完整描述IP形象，并明确指定为“纯2D扁平Q版动漫贴纸”。
+Do not generate a separate character image. Describe the IP directly in the Seedance 2.0 video prompt and explicitly define it as a pure flat chibi 2D anime sticker.
 
-如果图片中有多个同等显著的角色且用户没有说明目标，只问一个简短问题再消耗积分；如果只有一个明显主体，直接选取该主体。
+If an image contains several equally prominent characters and the target is ambiguous, ask one concise question before spending credits. If one subject is clearly dominant, use that subject.
 
-## 第二步：建立角色身份锚点
+## Step 2: Build the Character Identity Anchor
 
-先整理以下信息，再写生成提示词：
+Record these fields before writing a generation prompt:
 
 ```text
-角色名称：
-物种或人物身份：
-Q版身体比例：
-脸型、眼睛、嘴型、腮红和标志表情：
-发型/毛色/羽色及精确长度：
-上衣、下装、鞋子：
-帽子、耳环、围裙等配饰：
-可见文字、数字或Logo：
-主配色：
-绘画媒介、描边颜色、纸张纹理和贴纸边：
-角色在画面中的尺寸与位置：
-绝对不能改变的细节：
+Character name:
+Species or human identity:
+Chibi body proportions:
+Face shape, eyes, mouth, blush, and signature expression:
+Hair, fur, or feather color and exact length:
+Top, bottoms, and footwear:
+Hat, earrings, apron, and other accessories:
+Visible text, numbers, or logos:
+Primary color palette:
+Drawing medium, outline color, paper texture, and sticker border:
+Character scale and placement in frame:
+Details that must never change:
 ```
 
-只根据参考图中能看见的事实写锚点，不推测隐藏特征。角色的长发、帽子、可见数字、耳环、服装和“禁止新增配饰”等易漂移信息，需要在全局角色段和发生大动作的时间段重复一次。
+Use only facts visible in the reference image. Do not infer hidden traits. Repeat fragile details such as long hair, hats, visible numbers, earrings, clothing, and forbidden accessories in both the global character block and the timed beats where those details move.
 
-若参考图有可读文字，逐字保留；若没有文字，不要凭空增加。
+Preserve readable reference text exactly. Do not invent text when none exists.
 
-## 第三步：必要时用 GPT-Image-2 转绘
+## Step 3: Convert with GPT-Image-2 When Necessary
 
-本地图片先调用 SJinn `upload_asset`；稳定的公开 HTTPS 图片URL可直接使用。
+For a local image, call SJinn `upload_asset` first. Pass a stable public HTTPS URL directly.
 
-仅对路线B调用 SJinn `create_image_task`：
+Call SJinn `create_image_task` only for Route B:
 
 ```yaml
 model: "gpt-image-2"
-image_urls: ["<原图URL>"]
+image_urls: ["<original-image-url>"]
 aspect_ratio: "1:1"
-prompt: "<下方转绘提示词>"
+prompt: "<filled conversion prompt below>"
 ```
 
-不要给路线A重复转绘，也不要给路线C生成角色图。
+Do not redraw Route A images. Do not create a character image for Route C.
 
-### GPT-Image-2 转绘提示词模板
+### GPT-Image-2 Conversion Prompt Template
 
 ```text
-将参考图中的主要角色转绘为可用于视频身份锁定的Q版2D动漫贴纸角色标准图。
+Transform the main character in the supplied reference into a production-ready chibi 2D anime sticker character sheet for video identity locking.
 
-严格保留同一角色的可识别身份与全部可见设计：{{脸型与五官}}、{{发型/毛色及长度}}、{{服装鞋子}}、{{配饰}}、{{准确文字或数字}}、{{原始配色}}。不得重新设计角色。
+Strictly preserve the same recognizable identity and every visible design detail: {{face and features}}, {{hair or fur and exact length}}, {{clothing and footwear}}, {{accessories}}, {{exact visible text or numbers}}, and {{original palette}}. Do not redesign the character.
 
-画面中只出现一个完整角色，正面全身、居中、自然中性站姿，双手/双爪和完整发型、鞋子、配饰均无遮挡。背景为纯暖白色。使用{{Q版比例}}、{{描边颜色}}清晰连续卡通描边、扁平色块、轻微{{水彩/彩铅/蜡笔/纸张}}纹理，并沿完整轮廓增加干净白色贴纸裁切边。
+Show exactly one complete character, front-facing, full-body, centered, in a neutral natural pose. Keep both hands or paws, the complete hairstyle, footwear, and every accessory unobstructed. Use a plain warm-white background, {{chibi proportions}}, a clear continuous {{outline color}} cartoon outline, flat color regions, subtle {{watercolor / colored-pencil / crayon / paper}} texture, and a clean white sticker-cut border around the entire silhouette.
 
-这是纯2D平面印刷贴纸标准图，不是场景。不要厨房、厨具、道具、地面投影、环境光塑形、写实皮肤、写实毛发、写实羽毛、3D体积、塑料玩具、盲盒、黏土、毛绒、额外角色、额外肢体、服装改款或凭空增加文字。若原图存在“{{准确文字}}”，必须原样清晰保留。
+This is a pure flat printed 2D sticker reference, not a scene. No kitchen, utensils, props, ground shadow, environmental volumetric lighting, photorealistic skin, realistic fur, realistic feathers, 3D volume, plastic toy, blind-box figure, clay, plush material, extra character, extra limbs, redesigned clothing, or invented text. If the original contains "{{exact visible text}}", preserve it exactly and legibly.
 ```
 
-原图没有文字时，删除模板中的两处文字要求。
+If the source contains no text, remove both text-related clauses from the template.
 
-### 强制转绘确认关卡
+### Mandatory Conversion Approval Gate
 
-GPT-Image-2 转绘完成后必须暂停工作流。此时：
+Pause the workflow as soon as the GPT-Image-2 conversion finishes:
 
-1. 向用户展示生成的转绘图；
-2. 同时列出用于核对的角色身份锚点，重点标出脸型、发型/毛色、服装、配饰、文字和配色；
-3. 明确询问：`请确认是否使用这张2D Q版动漫贴纸图继续生成视频？`
-4. 不要预先编写完整 Seedance 提示词，也不要调用 `create_video_task`。
+1. Show the generated conversion image to the user.
+2. List the character identity anchor for comparison, emphasizing face, hair or fur, clothing, accessories, text, and palette.
+3. Ask exactly one clear question: `Do you approve this chibi 2D anime sticker image for the video?`
+4. Do not draft the complete Seedance prompt and do not call `create_video_task`.
 
-只有用户明确回复“确认”“可以”“继续”“就用这张”或其他清晰同意后，才把该转绘图设为 `@Image1` 并进入第四步。沉默、含糊评价、仅提出问题或只说“看到了”都不算确认。
+Proceed only after the user gives an explicit approval such as "approved," "looks good," "continue," "use this one," or an equally clear affirmative in any language. Silence, an ambiguous reaction, a question, or a simple acknowledgment does not count as approval.
 
-如果用户提出修改：
+If the user requests changes:
 
-- 先把修改要求合并进转绘提示词；
-- 只重新调用 GPT-Image-2，不生成视频；
-- 展示新版本并再次执行同一确认关卡；
-- 不沿用被用户拒绝或要求修改的旧图。
+- merge the requested changes into the conversion prompt;
+- regenerate only the character image;
+- show the new version and repeat the same approval gate;
+- never use a rejected or superseded image.
 
-即使转绘图看起来没有问题，也不能代替用户作出确认。此确认关卡是路线B唯一允许且必须发生的流程暂停点。
+Do not approve the conversion on the user's behalf even when it appears correct. This is the only mandatory workflow pause in Route B.
 
-## 第四步：编写 Seedance 2.0 提示词
+## Step 4: Write the Seedance 2.0 Prompt
 
-路线B只有在用户确认转绘图后才能进入本步。路线A和路线C不需要此确认关卡。
+Route B may enter this step only after the user approves the converted image. Route A and Route C do not require this approval gate.
 
-使用用户当前语言写提示词。若有参考图，在提示词中使用 Seedance 的 `@Image1` 标签，并保证它与 `image_urls` 第一项对应。
+Write prompts in the language requested by the user; otherwise use English. When a reference image exists, use the Seedance `@Image1` label and keep it aligned with the first item in `image_urls`.
 
-必须遵守这些规则：
+Enforce all of these rules:
 
-1. 厨房层始终真人实拍、照片级写实。
-2. 角色层始终纯2D扁平贴纸，不接受真实厨房光线的体积塑形。
-3. 角色固定坐在灶台侧面小木凳上，高度约为铁锅直径的一半。
-4. 全片只能有一个IP角色、一个木凳和一个铁锅。
-5. 铁锅、角色、调料瓶、水槽、窗户的方位全程不变。
-6. 时间戳是同一连续镜头中的动作拍点，不是四个互不相关的新场景。
-7. 盐、食物、蒸汽、玻璃罐、锅铲和真人手遵守真实物理。
-8. 红肿包、蚊香眼、喷泉泪、鼓腮、X眼、星星和灵魂烟必须是扁平卡通特效。
-9. 只表现无伤害荒诞喜剧，不表现真实击打、烫伤、窒息或痛苦。
-10. 每一拍只安排一个主要动作，避免多角色或同时发生的复杂交互。
-11. 严格锁定动作归属：00:00–00:03只能由2D IP角色的手/爪持握、抬起、倾斜盐罐并倒盐；真人手只能握锅铲翻炒，不能触碰、托住或倾斜盐罐。真人手首次接触盐罐必须发生在倒盐完成后的夺瓶动作。
+1. Keep the kitchen layer photorealistic and live-action.
+2. Keep the character layer pure flat 2D without volumetric relighting from the kitchen.
+3. Seat the character on a small wooden stool beside the stove at about half the wok's diameter in height.
+4. Show exactly one IP character, one stool, and one wok.
+5. Preserve the positions of the wok, character, bottles, sink, and window.
+6. Treat timestamps as action beats inside one continuous shot, not as unrelated new scenes.
+7. Keep salt, food, steam, jar, spatula, and human hands physically realistic.
+8. Keep the bump, spiral eyes, fountain tears, puffed cheeks, X eyes, stars, and spirit puff as flat cartoon effects.
+9. Use harmless absurd slapstick only. Do not show realistic hitting, burns, choking, or pain.
+10. Give each beat one dominant action. Avoid simultaneous complex interactions.
+11. Lock action ownership: from 00:00 to 00:03, only the 2D IP character's hands or paws may hold, lift, rotate, tilt, and pour the salt jar. The human hand may only stir with the spatula and must not touch, support, or tilt the jar. A human hand may first touch the jar only after the character finishes pouring.
 
-### Seedance 2.0 完整提示词模板
+### Complete Seedance 2.0 Prompt Template
 
 ```text
-【格式与合成风格】
-10秒竖屏9:16搞笑短视频，单一连续的真人实拍第一人称做饭POV，轻微手持微晃。
+[FORMAT AND COMPOSITE STYLE]
+A 10-second vertical 9:16 comedy short in one continuous live-action first-person cooking POV with subtle handheld micro-shake.
 
-画面由两个反差强烈的视觉层构成：
-1）真实厨房、铁锅、牛肉青菜、油光、蒸汽、盐粒、玻璃盐罐、锅铲、木凳、调料瓶、水槽、窗户和成年真人双手全部保持照片级真人实拍质感与可信物理；
-2）IP角色始终保持纯2D扁平Q版动漫贴纸，带{{绘画媒介}}、{{描边}}和{{贴纸边}}。
+Build two deliberately contrasting visual layers:
+1. The real kitchen, iron wok, beef and greens, oil sheen, steam, salt grains, glass salt jar, spatula, wooden stool, condiment bottles, sink, window, and adult human hands remain photorealistic live-action objects with believable physics.
+2. The IP character remains a pure flat chibi 2D anime sticker with {{drawing medium}}, {{outline}}, and {{sticker border}}.
 
-真实厨房光线不能把角色重新塑造成有体积的3D模型，不能产生写实皮肤、毛发、羽毛、塑料、黏土、毛绒或真实立体投影。
+Real kitchen lighting must never remodel the character into a volumetric 3D object. The character must never acquire realistic skin, fur, feathers, plastic, clay, plush material, or a realistic cast shadow.
 
-【参考图角色锁定｜有参考图时保留】
-仅把@Image1作为角色外观和画风的精确参考，不要把@Image1当作首帧或厨房背景。全程保持@Image1中的同一身份、脸型、身体比例、{{发型/毛色及长度}}、{{服装}}、{{配饰}}、准确可见文字“{{文字}}”、配色、描边、纸张纹理和贴纸轮廓。任何镜头都不能新增、删除、改色、缩短、合并或替换这些细节。
+[REFERENCE CHARACTER LOCK - KEEP ONLY WHEN A REFERENCE EXISTS]
+Use @Image1 only as the exact character-design and drawing-style reference. Do not use @Image1 as the first frame or kitchen background. Preserve the same identity, face, body proportions, {{hair or fur and exact length}}, {{clothing}}, {{accessories}}, exact visible text "{{text}}", palette, outline, paper texture, and sticker silhouette from @Image1 in every frame. Never add, remove, recolor, shorten, merge, or replace these details.
 
-【真实厨房】
-有人居住的真实居家厨房，视线从做饭者眼睛位置略微向下。黑色铁锅位于左侧偏中，锅中正在翻炒有真实油光的牛肉和青菜，持续滋滋作响，热蒸汽自然上升。背景为白色瓷砖墙和插座，酱油瓶与食用油瓶靠墙排列，右侧为不锈钢水槽，侧面窗户提供自然日光。全片保持同一个厨房布局、机位和左右方向。
+[REAL KITCHEN]
+Show a lived-in home kitchen from a slightly downward cook's-eye viewpoint. Place a black iron wok on the left-center burner, stir-frying glossy beef and green vegetables with continuous sizzling and natural rising steam. Show a white tiled wall and outlet behind it, soy sauce and cooking-oil bottles against the wall, a stainless-steel sink on the right, and soft daylight from a side window. Preserve the same kitchen layout, camera position, and left-right orientation throughout.
 
-【角色】
-{{角色名}}是{{完整角色身份锚点}}。同一个角色坐在灶台旁的小木凳上，身高约为铁锅直径的一半。角色像一张有轻微弹性的平面纸贴纸，只允许卡通挤压拉伸，轮廓始终清楚，不复制、不换装、不改变模型。成年真人手只在动作需要时从画面右侧进入，皮肤、毛孔与光影保持写实。
+[CHARACTER]
+{{character name}} is {{complete character identity anchor}}. Seat the same character on a small wooden stool beside the stove at about half the wok's diameter in height. The character behaves like a slightly flexible flat paper sticker with limited cartoon squash-and-stretch, a continuously readable silhouette, no duplication, no wardrobe change, and no model-sheet drift. Adult human hands enter from the right only when required and retain realistic skin texture, pores, and lighting.
 
-【道具与动作归属硬锁】
-玻璃盐罐是照片级写实道具，但倒盐动作的唯一操作者是2D IP角色。盐罐从角色怀中开始，其移动轨迹、抬升、旋转支点和倾斜方向始终连接角色清楚可见的两只2D手/爪；盐流必须从角色所持盐罐的罐口开始。
+[PROP AND ACTION OWNERSHIP HARD LOCK]
+The glass salt jar is a photorealistic prop, but the 2D IP character is the only performer of the pouring action. The jar begins in the character's lap or arms. Its movement path, lift, rotation pivot, and tilt remain visibly connected to the character's two clearly visible 2D hands or paws. The salt stream must begin at the mouth of the jar held by the character.
 
-00:00–00:03画面中只允许一只真人手出现，这只手从始至终只握锅铲翻炒，不能松开锅铲，不能接触、托举、遮挡、扶住或倾斜盐罐。盐罐周围不能出现真人手指、真人手掌、画外真人手或伪装在角色背后的真人手。不能由真人双手倒盐，不能让盐罐自行悬浮倒盐。
+From 00:00 to 00:03, show only one real human hand. That hand continuously grips the spatula and stirs. It never releases the spatula and never touches, lifts, blocks, supports, steadies, or tilts the salt jar. Show no real fingers, real palm, off-screen human hand, or human hand hidden behind the sticker near the jar. Do not let two real hands pour the salt. Do not let the jar float and pour by itself.
 
-只有在盐流停止、盐山已经形成且时间进入00:03之后，第二只真人手才能首次进入画面，从2D角色的手/爪中拿走盐罐。持锅铲的真人手与夺瓶的真人手始终职责分离。
+Only after the salt stream has stopped, the salt mound is visibly complete, and the timeline has entered 00:03 may a second real human hand enter for the first time and take the jar from the 2D character's hands or paws. Keep the spatula hand and the jar-snatching hand functionally separate.
 
-【00:00-00:03｜倒盐捣乱】
-一只真人手始终握住锅铲翻炒牛肉和青菜，不接触任何盐罐。{{角色名}}露出准备搞事的狡黠笑容，用两只清楚可见的2D手/爪独立抱住并举起一个比自己脑袋还大的照片级写实玻璃盐罐；角色主动抬高手臂、旋转盐罐并把罐口倾向铁锅，亲自把整罐白盐倒入锅中。盐罐的重量和旋转始终由角色的两只2D手/爪承接，不存在真人手辅助。大量真实盐粒只从角色所持盐罐的罐口形成连续密集的瀑布，在菜上堆成清晰的小白山。玻璃罐与盐粒遵守真实物理，操作者始终是纯2D贴纸角色。
-音效：持续食物滋滋声、密集盐粒沙沙声。
+[00:00-00:03 - SALT SABOTAGE]
+One real human hand continuously holds the spatula and stir-fries the beef and greens without touching any salt container. {{character name}} makes a sly troublemaking expression and independently wraps two clearly visible 2D hands or paws around a photorealistic glass salt jar larger than its head. The character raises its arms, rotates the jar, points the opening toward the wok, and personally pours the entire jar of white salt into the food. The two 2D hands or paws visibly carry the jar's weight and rotation without human assistance. Dense realistic salt grains flow only from the mouth of the character-held jar, forming a clear white mound on the food. The jar and salt obey realistic physics, but the operator remains the flat 2D sticker character.
+SFX: continuous food sizzling and dense salt-grain rustling.
 
-【00:03-00:05｜夺瓶轻敲】
-倒盐已经完成，盐流完全停止，盐山清楚形成。此时另一只真人手才首次出现，从角色仍然握着盐罐的两只2D手/爪中拿走盐罐；真人手不能提前参与倒盐。持锅铲的真人手再用锅铲平面在角色头顶极轻地卡通式敲一下。这是完全无伤害的荒诞喜剧。伴随“DUANG”，一个扁平红色卡通肿包弹出，纸片身体上下回弹一次，眼睛瞬间瞪圆，双手/双爪抱头。{{动作中最易丢失的帽子、长发、耳环等}}继续完整存在且设计不变。
-音效：轻微金属“DUANG”、一次卡通弹簧声。
+[00:03-00:05 - JAR SNATCH AND LIGHT BONK]
+The pouring is complete, the salt stream has fully stopped, and the salt mound is clearly formed. Only now does a second real human hand appear for the first time and take the jar from the character's still-visible 2D hands or paws. The human hand never participates in pouring. The separate spatula hand then gives the top of the character's head one extremely light cartoon tap with the flat of the spatula. This is harmless absurd slapstick. A flat red cartoon bump pops up with "DUANG"; the paper body bounces once, the eyes widen, and the hands or paws hold the head. {{fragile moving details such as hat, long hair, or earrings}} remain complete and unchanged.
+SFX: a light metallic "DUANG" and one cartoon spring sound.
 
-【00:05-00:08｜爆哭与尝味】
-角色的眼睛变成扁平蚊香眼，两道蓝色2D贴纸喷泉泪向两侧喷出。真人从盐山上铲起一口牛肉青菜，递到张开的卡通嘴边；食物以不可能但无伤害的卡通节奏“啵”地弹入口中。角色的腮帮立即鼓成两个圆形贴纸气球。不要表现强迫、窒息、受伤或真实痛苦。
-音效：夸张卡通爆哭声、锅铲刮盐沙沙声、轻柔“啵”声。
+[00:05-00:08 - CRY AND TASTE]
+The character's eyes become flat spiral eyes, and two blue 2D sticker tear fountains spray sideways. The human scoops one bite of beef and greens from the salt mound and offers it to the open cartoon mouth. The bite pops into the mouth with impossible but harmless cartoon timing. The cheeks instantly inflate into two round sticker balloons. Do not show force, choking, injury, or realistic distress.
+SFX: exaggerated cartoon crying, spatula scraping over salt, and one soft "pop".
 
-【00:08-00:10｜齁到K.O.】
-角色咽下一口，身体以扁平色块变化瞬间褪成苍白色，僵住半拍，眼睛变成两个卡通X。角色像一张轻薄纸片一样从木凳向后倒下，四肢短暂朝天。红肿包旁出现一圈扁平旋转小星星，一缕半透明卡通白烟从鼻尖升起。倒地时仍完整保留{{结尾最易漂移的长发、帽子、服装和配饰}}。最后0.3秒定格。
-音效：短促僵直“咯噔”、纸片倒地“咚”、滑稽升天音。
+[00:08-00:10 - SALTY K.O.]
+The character swallows, turns pale through a flat color swap, freezes for half a beat, and gets two cartoon X eyes. The character falls backward from the stool like a lightweight paper cutout with its limbs briefly raised. Flat dizzy stars spin beside the red bump, and one translucent cartoon spirit puff rises from the nose. Preserve {{fragile ending details such as long hair, hat, clothing, and accessories}} through the fall. Freeze the final 0.3 seconds.
+SFX: a short stiffening clunk, a paper-flat thud, and a brief comic ascension tone.
 
-【连续性与排除项】
-把所有时间段视为同一个不中断镜头里的连续动作，不要切换新厨房。铁锅内容物与盐山必须连续存在并逐步变化。固定角色大小、层级关系和场景地理。只出现一个角色、一个木凳、一个铁锅。
+[CONTINUITY AND EXCLUSIONS]
+Treat every timestamp as a consecutive action beat inside the same uninterrupted shot. Do not switch to a new kitchen. The same wok contents and salt mound must persist and evolve continuously. Keep character scale, compositing order, and scene geography fixed. Show exactly one character, one stool, and one wok.
 
-不要新场景、环绕运镜、新服装、新配饰、文字变化、3D角色、写实动物/人物化、额外肢体、真人手与道具融合、闪烁、变形、角色复制、水印、字幕、对白或背景音乐。绝对不要真人手倒盐、真人手扶盐罐、真人手藏在IP角色后面操纵盐罐、画外真人手倾斜盐罐或盐罐自行悬浮倒盐。
+No new scene, orbiting camera, new clothing, new accessories, altered text, 3D character, realistic animal or person conversion, extra limbs, fused human hand and prop, flicker, morphing, duplicated character, watermark, subtitles, dialogue, or background music. Absolutely no real human hand pouring salt, supporting the salt jar, hiding behind the IP character to operate the jar, tilting the jar from off-screen, or allowing the jar to float and pour by itself.
 ```
 
-### 没有参考图时的替换规则
+### No-Image Replacement
 
-删除整个“参考图角色锁定”段落，也不要出现 `@Image1`。把角色段写完整，例如：
+Delete the entire reference character lock block and every `@Image1` mention. Replace the character block with a complete text description such as:
 
 ```text
-一只圆滚滚的Q版企鹅2D贴纸，超大脑袋和极小身体，黑色头部与背部、白色肚皮、小橙色嘴和脚、黑色圆点眼睛、粉色腮红、两只小翅膀；深海军蓝粗描边、蜡笔颗粒、白色贴纸边。没有任何衣服、帽子、项链或其他配饰。全程没有写实羽毛或3D体积。
+A round chibi penguin 2D sticker with an oversized head and tiny body, black head and back, white belly, small orange beak and feet, black dot eyes, pink cheeks, and tiny wings; thick dark-navy outline, crayon grain, and a white sticker border. No clothing, hat, necklace, or other accessory. No realistic feathers or 3D volume at any time.
 ```
 
-描述文本IP时只选少量高辨识度特征，避免堆叠过多配饰。
+For a text-only IP, choose a small number of highly distinctive traits. Avoid stacking too many accessories.
 
-### 复杂角色锁定示例
+### Complex Character Lock Example
 
-对于长发、帽子、文字和多件服装的角色，使用类似：
+Use a block like this for a character with long hair, a hat, visible text, and several clothing items:
 
 ```text
-二头身Q版贴纸女孩，圆润娃娃脸、深棕大眼、橘粉腮红、一颗小虎牙、空气刘海；两条黑色长双马尾从耳后扎起并明确垂到腰部以下；米色棒球帽正面有准确白色数字“31”，金色圆耳环，米白粗针织毛衣、卡其宽松长裤、棕色圆头短靴；温暖水彩与彩铅纸张纹理、柔和深棕描边、清晰白色贴纸边。双马尾不能缩短、合并或变成其他发型；帽子、数字、耳环、服装和鞋子不能消失、变色或替换。
+A two-head-tall chibi sticker girl with a round doll face, large dark-brown eyes, orange-pink blush, one small fang, and airy bangs; two separate black ponytails tied behind the ears and extending clearly below the waist; a beige baseball cap with the exact white number "31", gold round earrings, an off-white chunky-knit sweater, loose khaki trousers, and brown round-toe ankle boots; warm watercolor and colored-pencil paper texture, soft dark-brown outline, and a clean white sticker border. Never shorten, merge, or restyle the ponytails. Never remove, recolor, or replace the cap, number, earrings, clothing, or boots.
 ```
 
-## 第五步：调用 SJinn Seedance 2.0
+## Step 5: Generate with SJinn Seedance 2.0
 
-路线A传入用户原始贴纸图URL；路线B只能传入用户已明确确认的转绘图URL：
+For Route A, pass the user's original sticker URL. For Route B, pass only the converted image URL that the user explicitly approved:
 
 ```yaml
 model: "seedance2"
-prompt: "<填充后的完整视频提示词>"
-image_urls: ["<2D贴纸参考图URL>"]
+prompt: "<filled complete video prompt>"
+image_urls: ["<approved-2D-sticker-reference-url>"]
 aspect_ratio: "9:16"
 duration: 10
 mode: "quality"
 resolution: "720p"
 ```
 
-不得把路线B的原图、未展示的转绘图、被拒绝的转绘图或尚未确认的转绘图传给 Seedance。路线C完全省略 `image_urls`。用户指定了 Seedance 2.0 支持的时长、比例或清晰度时，以用户要求为准。
+Never pass the Route B source image, an undisclosed conversion, a rejected conversion, or an unapproved conversion to Seedance. Omit `image_urls` entirely for Route C. Honor any user-specified duration, aspect ratio, or resolution supported by Seedance 2.0.
 
-新建任务后，如果客户端会自动跟踪结果，不要循环调用 `get_task`。只有用户明确要求查询既有任务时才调用 `get_task`。
+Do not repeatedly call `get_task` for a newly created task when the client tracks it automatically. Call `get_task` only when the user explicitly asks to check an existing task.
 
-## 第六步：交付与质检
+## Step 6: Deliver and Review
 
-交付时给出：
+For the final delivery, include:
 
-- 选择了A/B/C哪条路线；
-- 最终角色身份锚点；
-- 路线B所用的转绘提示词和生成结果；
-- 完整 Seedance 2.0 提示词与参数；
-- 视频任务或成片结果。
+- the selected Route A, B, or C;
+- the final character identity anchor;
+- the conversion prompt and image result for Route B;
+- the complete Seedance 2.0 prompt and parameters;
+- the video task or completed result.
 
-路线B在确认关卡的中间回复只给出：
+At the Route B approval gate, the interim reply must include only:
 
-- 转绘后的2D Q版动漫贴纸图；
-- 角色身份锚点核对项；
-- 一句明确的继续确认问题。
+- the converted chibi 2D anime sticker image;
+- the character identity anchor checklist;
+- one explicit approval question.
 
-不要在这条中间回复中混入 Seedance 视频提示词或声称视频已经开始生成。
+Do not include the Seedance video prompt or claim that video generation has started in that interim reply.
 
-如果成片可播放，抽查约0、3、5、8、10秒附近画面：
+If the completed video is playable, inspect representative frames near 0, 3, 5, 8, and 10 seconds. Verify:
 
-- 厨房是否写实，角色是否始终扁平2D；
-- 脸、发型/毛色、服装、配饰和文字是否一致；
-- 是否只有一个角色，是否凭空增加帽子、项链或其他物件；
-- 00:00–00:03是否能清楚看见IP角色的两只2D手/爪持握并倾斜盐罐，同时唯一真人手只握锅铲翻炒；
-- 真人手是否严格等到盐流停止和盐山形成后，才首次接触并拿走盐罐；
-- 倒盐、轻敲、爆哭喂食、X眼倒地是否顺序清楚；
-- 盐山、锅中食物和厨房布局是否连续；
-- 是否出现3D化、闪烁、变形、复制或场景重置；
-- 最后0.3秒是否形成清晰定格笑点。
+- the kitchen remains photorealistic while the character remains flat 2D;
+- face, hair or fur, clothing, accessories, and text remain unchanged;
+- exactly one character appears, with no invented hats, necklaces, or props;
+- from 00:00 to 00:03, both 2D hands or paws visibly hold and tilt the jar while the only real hand holds the spatula and stirs;
+- a real hand first touches and removes the jar only after the salt stream stops and the salt mound forms;
+- salt sabotage, light bonk, cartoon crying and feeding, and X-eye fall occur in order;
+- the salt mound, wok contents, and kitchen layout remain continuous;
+- no 3D conversion, flicker, morphing, duplication, or scene reset occurs;
+- the final 0.3 seconds form a readable freeze-frame payoff.
 
-发现问题时只追加最相关的修复句，不要堆积长负面词：
+When a defect appears, add only the most relevant repair clause:
 
-| 问题 | 修复句 |
+| Failure | Repair clause |
 |---|---|
-| 角色变3D | `角色在每一帧都像平面纸上印刷的油墨，零体积光影、零毛发、零皮肤、零塑料、零黏土或玩具深度。` |
-| 服装或配饰改变 | `把{{细节}}视为不可变模型锚点；在倒盐、回弹、爆哭和倒地前后均完整可见且完全一致。` |
-| 长发缩短或合并 | `两条独立长发从发根到腰部以下全程连续可见，回弹和倒地时也不能缩短或合并。` |
-| 凭空增加配饰 | `角色允许的配饰完整列表只有：{{列表}}；不存在其他帽子、项链、蝴蝶结、包或服装。` |
-| 角色复制 | `全片严格只有一个贴纸角色，不存在倒影、克隆、插图副本或背景副本。` |
-| 厨房在拍点间重置 | `单一不中断镜头；同一盐山和同一锅食物跨越所有时间段连续存在并演变。` |
-| 真人道具卡通化 | `盐罐、锅铲、盐、食物、铁锅、木凳和真人手全部保持照片级实物纹理与真实物理。` |
-| 真人手代替IP角色倒盐 | `00:00–00:03倒盐动作的唯一操作者是2D IP角色：两只2D手/爪始终清楚包住盐罐并完成抬起、旋转和倾斜；唯一真人手全程只握锅铲翻炒，直到盐流停止后才允许另一只真人手首次接触盐罐。` |
-| 卡通特效写实化 | `泪水、肿包、蚊香眼、鼓腮、X眼、星星和白烟全部是硬边扁平2D图形叠加。` |
-| 互动显得有伤害 | `所有接触都轻如羽毛且属于不可能的卡通闹剧，不出现受伤、窒息、烫伤或真实痛苦。` |
+| Character becomes 3D | `The character looks like flat ink printed on paper in every frame, with zero volumetric shading, fur, skin, plastic, clay, or toy depth.` |
+| Clothing or accessory changes | `Treat {{details}} as immutable model-sheet anchors; keep them fully visible and identical before, during, and after pouring, bouncing, crying, and falling.` |
+| Long hair shortens or merges | `Keep both separate hair tails continuously visible from their ties to below the waist, including during the bounce and fall; never shorten or merge them.` |
+| An unwanted accessory appears | `The complete allowed accessory list is: {{list}}. No other hat, necklace, bow, bag, or garment exists.` |
+| Character duplicates | `Exactly one sticker character exists; no reflection, clone, insert, illustration copy, or background duplicate.` |
+| Kitchen resets between beats | `Use one uninterrupted take; the same salt mound and wok contents persist and evolve continuously across every timestamp.` |
+| Real props become cartoon | `Keep the salt jar, spatula, salt, food, wok, stool, and human hands as photorealistic objects with real texture and physics.` |
+| Human hand pours instead of the IP character | `From 00:00 to 00:03, the 2D IP character is the only performer of the pouring action: two clearly visible 2D hands or paws wrap around the jar and complete the lift, rotation, and tilt; the only real hand continuously holds the spatula and stirs, and a second real hand may first touch the jar only after the salt stream stops.` |
+| Cartoon effects become realistic | `Keep the tears, bump, spiral eyes, puffed cheeks, X eyes, stars, and spirit puff as hard-edged flat 2D graphic overlays.` |
+| Interaction looks harmful | `All contact is feather-light impossible cartoon slapstick, with no injury, choking, burns, or realistic pain.` |
 
-不要未经用户同意静默消耗积分重做。先说明可见缺陷与最小修复方案，再由用户决定是否重新生成。
+Do not silently spend credits on another generation. Report the visible defect and the smallest repair first, then let the user decide whether to regenerate.
