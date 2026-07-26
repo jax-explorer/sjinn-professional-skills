@@ -70,6 +70,20 @@ Generates hyper-photorealistic first-person dragon-riding scenes with a rider-lo
 
 **Trigger:** "flying-dragon", "POV dragon ride", "dragon flight", "first-person dragon-riding video"
 
+### Sticker Cooking Comedy (`skills/viral-video/sticker-cooking-comedy/`)
+
+Creates funny short videos that composite a photorealistic live-action cooking kitchen with a flat chibi 2D anime sticker IP character.
+
+- Uses an uploaded 2D chibi sticker directly without redrawing it
+- Converts photographic, realistic, 3D, or non-chibi character images with `gpt-image-2`
+- Pauses after conversion and requires the user to approve the sticker image before video generation
+- Supports text-only IP descriptions when no character image is supplied
+- Locks character identity, hairstyle, clothing, accessories, visible text, and flat sticker texture throughout
+- Uses a 10-second four-beat gag: prank, harmless reaction, cartoon escalation, freeze-frame payoff
+- Generates the final live-action/2D composite with `seedance2`
+
+**Trigger:** "sticker-cooking-comedy", "真人厨房×2D动漫贴纸", "Q版IP炒菜", "厨房贴纸搞笑视频", "倒盐恶作剧"
+
 ## Setup
 
 ### Prerequisites
@@ -106,6 +120,7 @@ Open Claude Code in the project directory and use a trigger phrase:
 > influencer-image-clone
 > mini-rescue
 > flying-dragon
+> sticker-cooking-comedy
 ```
 
 Claude will guide you through the input gathering and generation workflow.
@@ -132,8 +147,10 @@ skills/
     │   ├── agents/
     │   │   └── openai.yaml # Codex UI metadata
     │   └── SKILL.md        # First-person dragon ride prompt system
-    └── mini-rescue/
-        └── SKILL.md        # Mini rescue prompt system
+    ├── mini-rescue/
+    │   └── SKILL.md        # Mini rescue prompt system
+    └── sticker-cooking-comedy/
+        └── SKILL.md        # Live-action kitchen × 2D sticker comedy
 ```
 
 ## Models Used
@@ -148,6 +165,8 @@ skills/
 | Mini Rescue (video) | `seedance2` | 10s, 9:16, quality mode |
 | Flying Dragon (image) | `nano-banana-pro` | 9:16, 2K still frame |
 | Flying Dragon (video) | `seedance2` | 10s, 9:16, quality mode |
+| Sticker Cooking Comedy (conversion, when needed) | `gpt-image-2` | 1:1 chibi 2D sticker reference, user-approved |
+| Sticker Cooking Comedy (video) | `seedance2` | 10s, 9:16, 1080p, quality mode |
 
 ## Adding New Skills
 
