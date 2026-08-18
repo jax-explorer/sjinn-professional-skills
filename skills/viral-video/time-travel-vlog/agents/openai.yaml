@@ -1,4 +1,11 @@
 interface:
   display_name: "Time Travel Vlog"
-  short_description: "Create cinematic time-travel vlog prompt sets"
-  default_prompt: "Use $time-travel-vlog to turn my scenario into five matched cinematic image and video prompts."
+  short_description: "Approve one prompt pair, then generate it with SJinn"
+  default_prompt: "Use $time-travel-vlog to draft one matched time-travel vlog prompt pair, get my approval, then generate the image and video."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "sjinn"
+      description: "SJinn reference upload, Nano Banana 2 image generation, and Kling 3.0 video generation"
+      transport: "streamable_http"
+      url: "https://mcp.sjinn.ai/mcp"
