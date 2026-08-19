@@ -1,31 +1,99 @@
 ---
 name: mechanical-toy
 description: >-
-  Generate three production-ready prompts that turn any creature, animal,
-  vehicle, robot, mythical entity, object, machine, structure, or other visual
-  subject into a hyper-realistic premium mechanical transformation toy: a
-  sealed compact-device image prompt, a fully transformed image prompt, and a
-  continuous image-to-video transformation prompt. Use for mechanical-toy
-  concepts, transformation-toy prompts, transforming pods or capsules,
-  collectible mechanical transformers, satisfying mechanical unfolding
-  videos, or requests to convert a subject into a compact device that
-  physically unfolds into its final form.
+  Generate and create a hyper-realistic mechanical transformation toy from any
+  creature, animal, vehicle, robot, mythical entity, object, machine, or
+  structure. Draft a compact-device image prompt, a fully transformed image
+  prompt, and a continuous transformation video prompt; pause for explicit
+  prompt approval; generate approved 9:16 first and last frames with SJinn Nano
+  Banana 2; pause for explicit frame approval; then animate the approved frames
+  with SJinn Kling 3.0. Use for mechanical-toy concepts, transformation-toy
+  prompts, transforming pods or capsules, collectible mechanical transformers,
+  satisfying mechanical unfolding videos, or requests to convert a subject
+  into a compact device that physically unfolds into its final form.
 ---
 
 # Mechanical Toy
 
-Turn the user's subject into a mysterious one-hand-held mechanical pod and its fully unfolded collectible form. Write all prompts in polished, production-ready English for modern image and video generators.
+Turn the user's subject into a mysterious one-hand-held mechanical pod and its fully unfolded collectible form, then create the approved first frame, last frame, and transformation video through SJinn MCP.
 
-## Workflow
+## Defaults
 
-1. Treat any supplied subject as sufficient. Do not ask follow-up questions.
-2. Choose one compact shape, one metallic finish, and one subject-appropriate color palette.
+- Prompt language: polished, production-ready English
+- First and last frames: Nano Banana 2, `9:16`, `2K`
+- Transformation video: Kling 3.0, two-image first/last-frame input, `10` seconds, `quality`
+
+Honor user-specified supported settings. Otherwise use these defaults.
+
+## Mandatory Workflow
+
+Follow these phases in order. Never collapse or bypass either approval gate.
+
+### Phase 1: Draft and approve all prompts
+
+1. Treat any supplied subject as sufficient. Do not ask follow-up questions when details can be inferred.
+2. Choose one compact shape, one metallic finish, one subject-appropriate color palette, and subject-specific mechanics.
 3. Reuse those exact design descriptors across all three prompts.
-4. Adapt the mechanical anatomy and transformation sequence to the subject.
-5. Generate all three required prompts immediately.
-6. Validate the result silently and return only the required output.
+4. Write the compact-device image prompt, fully transformed image prompt, and transformation video prompt.
+5. Validate and show the complete prompt set plus generation settings.
+6. Ask one explicit approval question in the user's language and stop. Do not call any SJinn generation tool yet, even if the initial request says to generate immediately.
 
-Do not explain, summarize, or add setup instructions. Do not generate assets or invoke media tools unless the user explicitly asks for generation in addition to the prompts.
+Proceed only after the user clearly approves the latest displayed prompt set with language such as `approved`, `confirm`, `use these`, `generate`, `确认`, `通过`, `就用这组`, or an equally explicit affirmative. Silence, a question, an ambiguous reaction, or a simple acknowledgment does not count as approval.
+
+Prompt approval authorizes exactly one compact-frame task and one matching transformed-frame task. It does not authorize retries or variants. If the user requests prompt changes, revise the affected details, show the complete three-prompt set again, and repeat this approval gate.
+
+### Phase 2: Generate the approved first and last frames
+
+After explicit prompt approval:
+
+1. Call SJinn `create_image_task` for the compact-device first frame:
+
+```yaml
+model: "nano-banana-2"
+prompt: "<approved compact-device image prompt>"
+aspect_ratio: "9:16"
+resolution: "2K"
+```
+
+2. Wait until the task exposes a completed image asset URL. Do not use a task ID or pending placeholder as a reference image.
+3. Call SJinn `create_image_task` for the fully transformed last frame, using the completed compact image as its reference:
+
+```yaml
+model: "nano-banana-2"
+prompt: "<approved fully transformed image prompt>"
+image_urls: ["<completed compact-image-url>"]
+aspect_ratio: "9:16"
+resolution: "2K"
+```
+
+4. Wait until both completed frame assets are available. Present both frames together with their roles and settings.
+5. Ask one explicit frame-approval question in the user's language and stop. Do not call `create_video_task` yet.
+
+Do not repeatedly call `get_task` for newly created tasks; the interactive client tracks them automatically. Call `get_task` only when the user explicitly asks to check or resume an existing task.
+
+If either task fails, report the failure and stop. Do not retry or spend more credits without fresh approval. A compact-frame retry invalidates the transformed frame and requires regenerating both; a transformed-frame-only retry may reuse the approved compact frame. After every retry, show both current frames and repeat the frame-approval gate.
+
+### Phase 3: Approve and animate the frames
+
+Proceed only after the user clearly approves the latest displayed pair with language such as `approved`, `confirm`, `use these frames`, `generate the video`, `确认`, `通过`, `使用这两张`, `生成视频`, or an equally explicit affirmative.
+
+Frame approval authorizes exactly one video task. Call SJinn `create_video_task` with the compact frame first and the transformed frame second:
+
+```yaml
+model: "kling3"
+prompt: "<approved transformation video prompt>"
+image_urls:
+  - "<approved compact-image-url>"
+  - "<approved transformed-image-url>"
+duration: 10
+mode: "quality"
+```
+
+Omit `aspect_ratio` when passing images to Kling 3.0 because the approved `9:16` frames determine the video ratio. Do not pass a resolution parameter unsupported by Kling 3.0. Preserve the exact approved video prompt and frame order.
+
+### Phase 4: Deliver the result
+
+Return the approved three-prompt set, the frame and video settings, both generated frame assets or task IDs, and the generated video asset or task ID. If video generation fails, report the failure and the smallest relevant correction; do not retry without fresh user approval.
 
 ## Core Concept
 
@@ -150,9 +218,9 @@ Tailor the color palette, finish material, articulation style, mechanical struct
 
 For unlisted subjects, derive equally specific mechanics from their recognizable silhouette, anatomy, function, and movement.
 
-## Output Format
+## Phase 1 Approval Output
 
-Return exactly these three sections. Wrap each prompt in its own `text` code block.
+Return exactly these prompt sections, the generation settings, and one approval question. Wrap each prompt in its own `text` code block.
 
 ````markdown
 ## IMAGE PROMPT — COMPACT DEVICE
@@ -172,13 +240,50 @@ Return exactly these three sections. Wrap each prompt in its own `text` code blo
 ```text
 [Complete continuous transformation paragraph]
 ```
+
+## GENERATION SETTINGS
+
+- First frame: Nano Banana 2 · 9:16 · 2K
+- Last frame: Nano Banana 2 · compact frame reference · 9:16 · 2K
+- Video: Kling 3.0 · approved first and last frames · 10s · Quality
+
+[One explicit prompt-approval question in the user's language.]
 ````
 
-Do not add a preface, explanation, summary, or trailing commentary.
+Do not include generated-task claims, asset placeholders, manual SJinn instructions, or extra commentary at this gate.
+
+## Phase 2 Frame Review Output
+
+After both image tasks complete, show:
+
+````markdown
+## MECHANICAL TOY — FRAME REVIEW
+
+### FIRST FRAME — COMPACT DEVICE
+
+[Render or link the completed compact-device image and include its task ID when useful.]
+
+### LAST FRAME — FULLY TRANSFORMED
+
+[Render or link the completed transformed image and include its task ID when useful.]
+
+### FRAME SETTINGS
+
+- Nano Banana 2 · 9:16 · 2K
+- Last frame generated with the first frame as its reference
+
+[One explicit frame-approval question in the user's language.]
+````
+
+Do not submit the video task in the same turn as the frame-review output.
+
+## Final Result Output
+
+After the approved video task is submitted or completes, return the approved prompts, settings, both frame assets or task IDs, and the video asset or task ID. Clearly label the compact image as the first frame and the transformed image as the last frame.
 
 ## Validation
 
-Before responding, verify:
+Before Phase 1 output, verify:
 
 - All three sections are present and in the required order.
 - Each prompt is immediately usable and enclosed in its own code block.
@@ -189,5 +294,10 @@ Before responding, verify:
 - The video begins with the exact style tag and is one paragraph without timestamps or bullets.
 - The video follows the required action order and uses subject-specific mechanics.
 - The result contains no text, logos, labels, clutter, music, explosions, magic, energy effects, or anime glow.
+- The output ends with one explicit prompt-approval question.
 
-Silently correct every failed check before returning the prompts.
+Before Phase 2, verify that the user explicitly approved the latest complete prompt set. Before generating the last frame, verify that its reference is the completed compact-image URL. Before presenting frame review, verify that both frame assets are complete and no video task has been submitted.
+
+Before Phase 3, verify that the user explicitly approved the latest displayed frame pair, both URLs refer to completed image assets, the compact image appears first in `image_urls`, and the exact approved video prompt is used.
+
+Silently correct every failed prompt check before returning Phase 1. Stop and report an asset or approval failure rather than bypassing a gate.

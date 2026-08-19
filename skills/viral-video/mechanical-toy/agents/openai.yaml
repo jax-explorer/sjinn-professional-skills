@@ -1,4 +1,11 @@
 interface:
   display_name: "Mechanical Toy"
-  short_description: "Create cinematic mechanical toy transformation prompts"
-  default_prompt: "Use $mechanical-toy to turn my subject into a compact mechanical toy and a cinematic transformation sequence."
+  short_description: "Approve prompts and frames, then generate with SJinn"
+  default_prompt: "Use $mechanical-toy to draft my transformation prompts, get my approval, generate and confirm both frames, then create the final video with SJinn."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "sjinn"
+      description: "SJinn Nano Banana 2 image generation and Kling 3.0 first-and-last-frame video generation"
+      transport: "streamable_http"
+      url: "https://mcp.sjinn.ai/mcp"
