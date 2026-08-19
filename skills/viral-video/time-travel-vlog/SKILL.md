@@ -11,7 +11,7 @@ Turn the user's scenario into one matched image/video prompt pair. Obtain explic
 
 - Prompt language: polished cinematic English
 - Image: Nano Banana 2, `9:16`, `2K`
-- Video: Kling 3.0 image-to-video, `9:16`, `10` seconds, `quality`, `1080p`
+- Video: Kling 3.0 image-to-video, `10` seconds, Standard mode; output ratio inherited from the `9:16` first-frame image
 - Structure: one continuous front-facing vlog take with no cuts or multi-shot sequence
 
 Honor user-specified supported settings. Otherwise use these defaults.
@@ -62,13 +62,12 @@ Without asking for a second approval, call SJinn `create_video_task` with:
 model: "kling3"
 prompt: "<approved matching video prompt>"
 image_urls: ["<generated-image-url>"]
-aspect_ratio: "9:16"
 duration: 10
-mode: "quality"
-resolution: "1080p"
 ```
 
-Keep the same aspect ratio across image and video. Encode `one continuous shot, no cuts, no multi-shot sequence` in the video prompt because the MCP schema has no separate Multi Shot switch.
+For Kling 3 image-to-video, let the first-frame image determine the output ratio. Do not pass `aspect_ratio`, `resolution`, or `mode`: Kling 3 does not accept a resolution selector, and its native quality tiers are Standard and Pro rather than `quality`. Omitting the mode uses Standard. Encode `one continuous shot, no cuts, no multi-shot sequence` in the video prompt because the unified MCP schema has no separate Multi Shot switch.
+
+If the user explicitly requests Kling Pro but the active SJinn MCP tool does not expose Kling's native `model_mode: "pro"`, report that limitation before generation. Do not silently translate Pro into `mode: "quality"`.
 
 Do not repeatedly call `get_task` for newly created tasks; the interactive client tracks them automatically. Call `get_task` only when the user explicitly asks to check or resume an existing task. Submit the video only when the completed image URL becomes available.
 
@@ -182,7 +181,7 @@ Spoken Script:
 ### GENERATION SETTINGS
 
 - Image: Nano Banana 2 · 9:16 · 2K
-- Video: Kling 3.0 · 9:16 · 10s · Quality · 1080p
+- Video: Kling 3.0 · 10s · Standard · 9:16 inherited from first frame
 
 [One explicit approval question in the user's language.]
 ````
@@ -199,6 +198,7 @@ Before Phase 1 output, verify:
 - Both prompts use front-facing arm's-length vlog framing without a visible device.
 - The video includes reaction, background activity, environmental movement, atmosphere, and continuous scene motion.
 - Self-insert reference phrases appear in the image prompt and not in the video prompt.
+- The Kling 3 call omits `aspect_ratio`, `resolution`, and `mode` when using the generated first-frame image.
 - The output ends with one explicit approval question.
 
 Before Phase 2, verify that the user approved the latest complete pair. Before Phase 3, verify that the video uses the generated image URL and the approved matching video prompt.
