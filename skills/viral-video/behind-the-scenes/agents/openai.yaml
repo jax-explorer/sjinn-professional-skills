@@ -1,0 +1,11 @@
+interface:
+  display_name: "Behind the Scenes — Set Piece Studio"
+  short_description: "Create miniature practical-FX disaster footage"
+  default_prompt: "Use $behind-the-scenes to turn a place and disaster into a matched miniature-set image and video."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "sjinn"
+      description: "SJinn GPT-Image-2 still generation and Seedance 2 Mini image-to-video generation"
+      transport: "streamable_http"
+      url: "https://mcp.sjinn.ai/mcp"

@@ -60,6 +60,17 @@ Generates cinematic "giant hand saves the day" miniature-world rescue scenes —
 
 **Trigger:** "mini-rescue", "miniature rescue", "tiny people rescue", "giant hand rescue"
 
+### Behind the Scenes (`skills/viral-video/behind-the-scenes/`)
+
+Creates amateur phone-footage-style miniature disaster shoots inside an enormous practical-FX soundstage.
+
+- Converts real places and uploaded skylines into original, IP-safe miniature architecture
+- Locks the same in-floor tank, colossal blue screen, orange tracking crosses, crew, hardware, and practical disaster across image and video
+- Includes 11 physical disaster families with exact FX setups and prompt tags
+- Generates one `9:16` still with GPT-Image-2, then an `8s` image-to-video clip with Seedance 2 Mini
+
+**Trigger:** "behind-the-scenes", "miniature disaster set", "practical-FX city destruction", "BTS miniature shoot"
+
 ### Flying Dragon (`skills/viral-video/flying-dragon/`)
 
 Generates hyper-photorealistic first-person dragon-riding scenes with a rider-locked POV, visible hands and harness, and a centered dragon spine.
@@ -119,6 +130,7 @@ Open Claude Code in the project directory and use a trigger phrase:
 > product-hero
 > influencer-image-clone
 > mini-rescue
+> behind-the-scenes
 > flying-dragon
 > sticker-cooking-comedy
 ```
@@ -143,6 +155,12 @@ skills/
 │   └── realistic-image/
 │       └── SKILL.md        # Raw Camera Casting Realism prompt system
 └── viral-video/
+    ├── behind-the-scenes/
+    │   ├── agents/
+    │   │   └── openai.yaml # Codex UI metadata and SJinn dependency
+    │   ├── references/
+    │   │   └── set-piece-studio-style-bible.md
+    │   └── SKILL.md        # Miniature practical-FX disaster workflow
     ├── flying-dragon/
     │   ├── agents/
     │   │   └── openai.yaml # Codex UI metadata
@@ -163,6 +181,8 @@ skills/
 | Influencer Image Clone | `nano-banana-pro` | Reference-guided 2K still image |
 | Mini Rescue (image) | `nano-banana-2` | 9:16, 2K still frame |
 | Mini Rescue (video) | `seedance2` | 10s, 9:16, quality mode |
+| Behind the Scenes (image) | `gpt-image-2` | 9:16 miniature practical-FX still |
+| Behind the Scenes (video) | `seedance2` (`mini` mode) | 8s, 9:16, 720p image-to-video clip |
 | Flying Dragon (image) | `nano-banana-pro` | 9:16, 2K still frame |
 | Flying Dragon (video) | `seedance2` | 10s, 9:16, quality mode |
 | Sticker Cooking Comedy (conversion, when needed) | `gpt-image-2` | 1:1 chibi 2D sticker reference, user-approved |
