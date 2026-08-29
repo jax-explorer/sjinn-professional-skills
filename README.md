@@ -60,6 +60,18 @@ Generates cinematic "giant hand saves the day" miniature-world rescue scenes —
 
 **Trigger:** "mini-rescue", "miniature rescue", "tiny people rescue", "giant hand rescue"
 
+### Object Talk (`skills/viral-video/object-talk/`)
+
+Creates one expressive talking-object clip per object, then concatenates the ordered clips with SJinn MCP.
+
+- Defaults to strawberry, cucumber, and tomato when no object or theme is supplied
+- Creates Pixar-style 3D first frames with `nano-banana-2`
+- Generates adaptive 4–15 second monologues with Seedance 2 Mini and native audio
+- Composes the completed clips in order with SJinn `create_compose_task`
+- Supports explicit object lists, themed three-object sets, and custom aspect ratios
+
+**Trigger:** "object-talk", "Object Talk", "talking objects", "object rant", "talking food video"
+
 ### Behind the Scenes (`skills/viral-video/behind-the-scenes/`)
 
 Creates amateur phone-footage-style miniature disaster shoots inside an enormous practical-FX soundstage.
@@ -130,6 +142,7 @@ Open Claude Code in the project directory and use a trigger phrase:
 > product-hero
 > influencer-image-clone
 > mini-rescue
+> object-talk
 > behind-the-scenes
 > flying-dragon
 > sticker-cooking-comedy
@@ -167,6 +180,10 @@ skills/
     │   └── SKILL.md        # First-person dragon ride prompt system
     ├── mini-rescue/
     │   └── SKILL.md        # Mini rescue prompt system
+    ├── object-talk/
+    │   ├── agents/
+    │   │   └── openai.yaml # Codex UI metadata and SJinn dependency
+    │   └── SKILL.md        # Talking-object generation and SJinn composition workflow
     └── sticker-cooking-comedy/
         └── SKILL.md        # Live-action kitchen × 2D sticker comedy
 ```
@@ -181,6 +198,8 @@ skills/
 | Influencer Image Clone | `nano-banana-pro` | Reference-guided 2K still image |
 | Mini Rescue (image) | `nano-banana-2` | 9:16, 2K still frame |
 | Mini Rescue (video) | `seedance2` | 10s, 9:16, quality mode |
+| Object Talk (image) | `nano-banana-2` | One 9:16, 2K still per object |
+| Object Talk (video) | `seedance2` (`mini` mode) | One adaptive 4–15s, 9:16, 720p clip per object; SJinn ordered composition |
 | Behind the Scenes (image) | `gpt-image-2` | 9:16 miniature practical-FX still |
 | Behind the Scenes (video) | `seedance2` (`mini` mode) | 8s, 9:16, 720p image-to-video clip |
 | Flying Dragon (image) | `nano-banana-pro` | 9:16, 2K still frame |

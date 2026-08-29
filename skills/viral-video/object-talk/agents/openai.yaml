@@ -1,0 +1,11 @@
+interface:
+  display_name: "Object Talk"
+  short_description: "Create talking-object videos and compose the clips"
+  default_prompt: "Use $object-talk to turn my objects or theme into a composed vertical talking-object video."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "sjinn"
+      description: "SJinn Nano Banana 2 image generation, Seedance 2 Mini image-to-video generation with native audio, and ordered video composition"
+      transport: "streamable_http"
+      url: "https://mcp.sjinn.ai/mcp"
