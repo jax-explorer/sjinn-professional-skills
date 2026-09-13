@@ -1,0 +1,11 @@
+interface:
+  display_name: "Veo3 Story Video"
+  short_description: "Create consistent story videos with Veo 3.1 Fast"
+  default_prompt: "Use $veo3-story-video to turn my topic and character references into one complete story video using Nano Banana 2, Veo 3.1 Fast, and SJinn video composition."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "sjinn"
+      description: "SJinn asset upload, Nano Banana 2 reference and scene images, Veo 3.1 Fast image-to-video generation, and ordered video composition"
+      transport: "streamable_http"
+      url: "https://mcp.sjinn.ai/mcp"

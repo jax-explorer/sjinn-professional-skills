@@ -72,6 +72,19 @@ Creates one expressive talking-object clip per object, then concatenates the ord
 
 **Trigger:** "object-talk", "Object Talk", "talking objects", "object rant", "talking food video"
 
+### Veo3 Story Video (`skills/viral-video/veo3-story-video/`)
+
+Creates one complete story or vlog video with consistent characters and locations.
+
+- Creates or reuses a separate three-view reference for every character
+- Generates a panoramic reference for every location and numbered-reference storyboard frames with `nano-banana-2`
+- Plans 8-second scenes and animates each completed first frame with `veo3.1-fast`
+- Defaults to 16:9 and approximately 30 seconds (four scenes, approximately 32 seconds)
+- Uses native Veo audio with external TTS and LipSync disabled by default
+- Concatenates completed clips in storyboard order with SJinn MCP `create_compose_task`, preserving their audio
+
+**Trigger:** "veo3-story-video", "veo3 story video", "Veo story generation", "故事视频", "连续剧情短片"
+
 ### Behind the Scenes (`skills/viral-video/behind-the-scenes/`)
 
 Creates amateur phone-footage-style miniature disaster shoots inside an enormous practical-FX soundstage.
@@ -143,6 +156,7 @@ Open Claude Code in the project directory and use a trigger phrase:
 > influencer-image-clone
 > mini-rescue
 > object-talk
+> veo3-story-video
 > behind-the-scenes
 > flying-dragon
 > sticker-cooking-comedy
@@ -184,6 +198,10 @@ skills/
     │   ├── agents/
     │   │   └── openai.yaml # Codex UI metadata and SJinn dependency
     │   └── SKILL.md        # Talking-object generation and SJinn composition workflow
+    ├── veo3-story-video/
+    │   ├── agents/
+    │   │   └── openai.yaml # Codex UI metadata and SJinn dependency
+    │   └── SKILL.md        # Story workflow, model arguments, and SJinn composition
     └── sticker-cooking-comedy/
         └── SKILL.md        # Live-action kitchen × 2D sticker comedy
 ```
@@ -200,6 +218,8 @@ skills/
 | Mini Rescue (video) | `seedance2` | 10s, 9:16, quality mode |
 | Object Talk (image) | `nano-banana-2` | One 9:16, 2K still per object |
 | Object Talk (video) | `seedance2` (`mini` mode) | One adaptive 4–15s, 9:16, 720p clip per object; SJinn ordered composition |
+| Veo3 Story Video (image) | `nano-banana-2` | Character sheets, location panoramas, and 2K scene first frames |
+| Veo3 Story Video (video) | `veo3.1-fast` | Planned 8s scenes, 16:9 by default, with SJinn ordered composition |
 | Behind the Scenes (image) | `gpt-image-2` | 9:16 miniature practical-FX still |
 | Behind the Scenes (video) | `seedance2` (`mini` mode) | 8s, 9:16, 720p image-to-video clip |
 | Flying Dragon (image) | `nano-banana-pro` | 9:16, 2K still frame |
