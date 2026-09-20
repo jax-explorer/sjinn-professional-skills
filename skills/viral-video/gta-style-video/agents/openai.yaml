@@ -1,0 +1,11 @@
+interface:
+  display_name: "GTA Style Video"
+  short_description: "Turn everyday missions into third-person game videos"
+  default_prompt: "Use $gta-style-video to turn my scenario into a 30-second third-person gameplay video with a fixed HUD and a clear mission."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "sjinn"
+      description: "SJinn Seedance 2.5 video generation and optional reference asset uploads"
+      transport: "streamable_http"
+      url: "https://mcp.sjinn.ai/mcp"

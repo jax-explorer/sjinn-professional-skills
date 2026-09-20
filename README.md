@@ -106,6 +106,18 @@ Generates hyper-photorealistic first-person dragon-riding scenes with a rider-lo
 
 **Trigger:** "flying-dragon", "POV dragon ride", "dragon flight", "first-person dragon-riding video"
 
+### GTA Style Video (`skills/viral-video/gta-style-video/`)
+
+Turns a scenario into third-person gameplay with a clear mission, physical player actions, persistent character/world state, and a fixed HUD; generates with SJinn when requested.
+
+- Three camera/edit modes: continuous mission, a single-cut comic payoff, and open-world exploration montage
+- Separate controls for rendering style, spoken language, HUD language, and environmental signage
+- Reusable office-stealth, survival-rescue, sunken-ruins, and winter-mystery recipes, including a complete office prompt
+- Checks action density, traversable routes, cover geometry, cast continuity, and HUD changes before generation
+- Defaults to one 30-second, 16:9, 720p `seedance2.5` task; prompt-only requests do not submit generation tasks
+
+**Trigger:** "gta-style-video", "GTA style video", "GTA风格视频", "游戏实机感短片", "第三人称任务视频"
+
 ### Sticker Cooking Comedy (`skills/viral-video/sticker-cooking-comedy/`)
 
 Creates funny short videos that composite a photorealistic live-action cooking kitchen with a flat chibi 2D anime sticker IP character.
@@ -159,6 +171,7 @@ Open Claude Code in the project directory and use a trigger phrase:
 > veo3-story-video
 > behind-the-scenes
 > flying-dragon
+> gta-style-video
 > sticker-cooking-comedy
 ```
 
@@ -192,6 +205,10 @@ skills/
     │   ├── agents/
     │   │   └── openai.yaml # Codex UI metadata
     │   └── SKILL.md        # First-person dragon ride prompt system
+    ├── gta-style-video/
+    │   ├── agents/
+    │   │   └── openai.yaml # Codex UI metadata and SJinn dependency
+    │   └── SKILL.md        # Complete workflow, prompt template, recipes, and SJinn generation
     ├── mini-rescue/
     │   └── SKILL.md        # Mini rescue prompt system
     ├── object-talk/
@@ -224,6 +241,7 @@ skills/
 | Behind the Scenes (video) | `seedance2` (`mini` mode) | 8s, 9:16, 720p image-to-video clip |
 | Flying Dragon (image) | `nano-banana-pro` | 9:16, 2K still frame |
 | Flying Dragon (video) | `seedance2` | 10s, 9:16, quality mode |
+| GTA Style Video | `seedance2.5` | 30s, 16:9, 720p third-person gameplay by default |
 | Sticker Cooking Comedy (conversion, when needed) | `gpt-image-2` | 1:1 chibi 2D sticker reference, user-approved |
 | Sticker Cooking Comedy (video) | `seedance2` | 10s, 9:16, 720p, quality mode |
 
